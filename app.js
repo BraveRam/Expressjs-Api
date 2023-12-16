@@ -4,7 +4,7 @@ const app = express()
 const PORT = 8000
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.json({"message": "This is Express API."})
 })
 
 app.get('/about', (req, res) => {
