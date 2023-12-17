@@ -11,6 +11,10 @@ app.get('/about', (req, res) => {
   res.json({"message": "This is about section."})
 })
 
+app.get("*", (req, res)=>{
+  res.json({"message": "Invalid route."})
+})
+
 app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
 }) 
