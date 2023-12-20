@@ -7,7 +7,7 @@ const PORT = 8000;
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.json({ message: "This is Express API - deployed to vercel." });
+  res.json({ message: "This is Express API - deployed to Vercel." });
 });
 
 function HMAC_SHA256(key, secret) {
@@ -22,7 +22,7 @@ function getCheckString(data) {
 
   return items
     .sort(([a], [b]) => a.localeCompare(b)) // sort keys
-    .map(([k, v]) => ${k}=${v}) // combine key-value pairs
+    .map(([k, v]) => `${k}=${v}`) // combine key-value pairs
     .join("\n");
 }
 
@@ -30,7 +30,7 @@ app.post("/validate-init", (req, res) => {
   const data = new URLSearchParams(req.body);
 
   const data_check_string = getCheckString(data);
-  const secret_key = HMAC_SHA256("WebAppData", 6464751970:AAFfVZYceyuZV3gExwPELbnCwvKZtx1wdJw).digest();
+  const secret_key = HMAC_SHA256("WebAppData", "6464751970:AAFfVZYceyuZV3gExwPELbnCwvKZtx1wdJw").digest();
   const hash = HMAC_SHA256(secret_key, data_check_string).digest("hex");
 
   if (hash === data.get("hash")) {
@@ -42,5 +42,5 @@ app.post("/validate-init", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(✅ Server is running on port ${PORT});
+  console.log(`✅ Server is running on port ${PORT}`);
 });
