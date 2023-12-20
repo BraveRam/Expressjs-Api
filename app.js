@@ -39,7 +39,7 @@ app.post("/validate-init", (req, res) => {
     // validated!
     return res.json(Object.fromEntries(data.entries()));
   } else {
-    return res.status(401).json({});
+    return res.status(401).json({"message": "Unauthorized"});
   }
 });
 
