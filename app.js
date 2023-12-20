@@ -34,7 +34,7 @@ app.post("/validate-init", (req, res) => {
   const data_check_string = getCheckString(data);
   const secret_key = HMAC_SHA256("WebAppData", "6464751970:AAFfVZYceyuZV3gExwPELbnCwvKZtx1wdJw").digest();
   const hash = HMAC_SHA256(secret_key, data_check_string).digest("hex");
-  return res.json({"hmm": data.get("hash")})
+  return res.json({"hmm": data})
   /*if (hash === data.get("hash")) {
     // validated!
     return res.json(Object.fromEntries(data.entries()));
