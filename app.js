@@ -5,9 +5,10 @@ const cors = require("cors");
 const app = express();
 const PORT = 8000;
 
-app.use(cors({
+/*app.use(cors({
  origin: ['https://splendorous-froyo-53c1e7.netlify.app/']
- }));
+ }));*/
+app.use(cors())
 app.use(express.json());
 
 app.get("/", (req, res) => {
