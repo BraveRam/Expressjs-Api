@@ -6,7 +6,7 @@ const app = express();
 const PORT = 8000;
 
 app.use(cors({
- origin: ['https://www.section.io', 'https://www.google.com/']
+ origin: ['https://splendorous-froyo-53c1e7.netlify.app/']
  }));
 app.use(express.json());
 
