@@ -36,7 +36,7 @@ app.post("/validate-init", express.text(), (req, res) => {
  
   if (hash === data.get("hash")) {
     // validated!
-    return res.json(Object.fromEntries(data.entries()));
+    return res.status(200).res.json(Object.fromEntries(data.entries()));
   } else {
     return res.status(401).json({"message": `Unauthorized ${data}`});
   }
