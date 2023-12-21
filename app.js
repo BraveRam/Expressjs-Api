@@ -19,12 +19,11 @@ function HMAC_SHA256(key, secret) {
 function getCheckString(data) {
   const items = [];
 
-  // remove hash
   for (const [k, v] of data.entries()) if (k !== "hash") items.push([k, v]);
 
   return items
-    .sort(([a], [b]) => a.localeCompare(b)) // sort keys
-    .map(([k, v]) => `${k}=${v}`) // combine key-value pairs
+    .sort(([a], [b]) => a.localeCompare(b)) 
+    .map(([k, v]) => `${k}=${v}`) 
     .join("\n");
 }
 
@@ -37,7 +36,7 @@ app.post("/validate-init", express.text(), (req, res) => {
  
   if (hash === data.get("hash")) {
     // validated!
-    return res.json(Object.fromEntries(data.entries()));
+    return res.status(200).res.json(Object.fromEntries(data.entries()));
   } else {
     return res.status(401).json({"message": `Unauthorized ${data}`});
   }
